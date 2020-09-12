@@ -4,7 +4,7 @@
   "description": "A React wrapper around the service https://picsum.photos/",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
