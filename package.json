@@ -4,8 +4,9 @@
   "description": "A React wrapper around the service https://picsum.photos/",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist/types",
     "test": "echo \"Error: no test specified\"",
     "release": "np --no-2fa",
     "storybook": "start-storybook -p 6006",
