@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\"",
-    "release": "np",
+    "release": "np --no-2fa",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
