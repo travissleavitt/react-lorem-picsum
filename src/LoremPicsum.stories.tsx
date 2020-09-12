@@ -1,8 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import times from 'lodash/times';
-import { LoremPicsumProps } from '../types';
-import LoremPicsum from './LoremPicsum';
+import LoremPicsum, { LoremPicsumProps } from './LoremPicsum';
 
 export default {
   title: 'LoremPicsum',

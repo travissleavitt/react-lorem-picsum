@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist/types",
+    "build": "rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist",
     "test": "echo \"Error: no test specified\"",
     "release": "yarn build && np --no-2fa",
     "storybook": "start-storybook -p 6006",

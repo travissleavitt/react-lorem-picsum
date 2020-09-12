@@ -1,4 +1,4 @@
-import { LoremPicsumProps } from '../types';
+import { LoremPicsumProps } from './LoremPicsum';
 
 /**
  * URL structures include:
