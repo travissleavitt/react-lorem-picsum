@@ -13,7 +13,7 @@ A simple React wrapper around [Lorem Picsum](https://picsum.photos/).
 #### Yarn
 
 ```
- yarn add install react-lorem-picsum
+ yarn add react-lorem-picsum
 ```
 
 ## How to Use
@@ -40,7 +40,7 @@ import { LoremPicsum } from "react-lorem-picsum";
 
 ### Force Random
 
-To force random images of the same size provide an number. Please note specifying an `id` will not work when `forceRandom` is present.
+To force random images of the same size provide a number. Please note specifying an `id` will not work when `forceRandom` is present.
 
 ```js
 import { LoremPicsum } from "react-lorem-picsum";
