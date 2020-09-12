@@ -9,34 +9,34 @@ import { LoremPicsumProps } from './LoremPicsum';
  *
  */
 export const getBaseUrl = (options: Partial<LoremPicsumProps>): String => {
-  const { id, random = false, forceRandom } = options;
   const baseUrl = 'https://picsum.photos';
 
-  if (forceRandom) {
+  if (!options) {
     return baseUrl;
   }
 
-  if (id) {
-    return `${baseUrl}/id/${id}`;
+  if (options.forceRandom) {
+    return baseUrl;
   }
 
-  if (random) {
+  if (options.id) {
+    return `${baseUrl}/id/${options.id}`;
+  }
+
+  if (options.random) {
     return `${baseUrl}/seed/picsum`;
   }
 
   return baseUrl;
 };
 
-export const getDimensions = ({ width, height }: Partial<LoremPicsumProps>): String => {
-  return height ? `/${width}/${height}` : `/${width}`;
+export const getDimensions = ({ width = 100, height }: Partial<LoremPicsumProps>): String => {
+  const imageHeight = height || width;
+  return `/${width}/${imageHeight}`;
 };
 
 export const getOptions = ({ grayscale, blur, forceRandom }: Partial<LoremPicsumProps>): String => {
   const queryString = [];
-
-  if (grayscale) {
-    queryString.push('grayscale');
-  }
 
   if (forceRandom) {
     queryString.push(`random=${forceRandom}`);
@@ -44,6 +44,10 @@ export const getOptions = ({ grayscale, blur, forceRandom }: Partial<LoremPicsum
 
   if (blur) {
     queryString.push(`blur=${blur}`);
+  }
+
+  if (grayscale) {
+    queryString.push('grayscale');
   }
 
   if (queryString.length === 0) {
