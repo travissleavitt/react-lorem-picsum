@@ -1,34 +1,37 @@
-import { Blur } from '../types';
+import { LoremPicsumProps } from '../types';
 
-const LOREM_PICSUM_ROOT_URL = 'https://picsum.photos';
+/**
+ * URL structures include:
+ *
+ * https://picsum.photos
+ * https://picsum.photos/id/{id}
+ * https://picsum.photos/seed/picsum
+ *
+ */
+export const getBaseUrl = (options: Partial<LoremPicsumProps>): String => {
+  const { id, random = false, forceRandom } = options;
+  const baseUrl = 'https://picsum.photos';
 
-export const getBaseUrl = ({ id, random }: { id?: Number; random?: Boolean }): String => {
+  if (forceRandom) {
+    return baseUrl;
+  }
+
   if (id) {
-    return `${LOREM_PICSUM_ROOT_URL}/id/${id}`;
+    return `${baseUrl}/id/${id}`;
   }
 
   if (random) {
-    return `${LOREM_PICSUM_ROOT_URL}/seed/picsum`;
+    return `${baseUrl}/seed/picsum`;
   }
 
-  return LOREM_PICSUM_ROOT_URL;
+  return baseUrl;
 };
 
-export const getDimensions = (width: Number, height: Number): String => {
-  if (width && !height) {
-    return `/${width}`;
-  }
-
-  return `/${width}/${height}`;
+export const getDimensions = ({ width, height }: Partial<LoremPicsumProps>): String => {
+  return height ? `/${width}/${height}` : `/${width}`;
 };
 
-type Options = {
-  grayscale?: Boolean;
-  blur?: Blur;
-  forceRandom?: Number;
-};
-
-export const getOptions = ({ grayscale, blur, forceRandom }: Options): String => {
+export const getOptions = ({ grayscale, blur, forceRandom }: Partial<LoremPicsumProps>): String => {
   const queryString = [];
 
   if (grayscale) {

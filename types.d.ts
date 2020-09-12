@@ -1,36 +1,37 @@
 export type Blur = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+export type FileExtension = 'jpg' | 'webp';
 
 export interface LoremPicsumProps {
   /**
-   * The base URL
-   */
-  baseUrl?: String;
-  /**
    * Specify an image by ID
    */
-  id?: Number;
+  id?: number;
   /**
    * Random image
    */
-  random?: Boolean;
+  random?: boolean;
   /**
    * Image height
    */
-  height?: Number;
+  height?: number;
   /**
    * Image width
    */
-  width?: Number;
+  width?: number;
   /**
    * Make the image grayscale
    */
-  grayscale?: Boolean;
+  grayscale?: boolean;
   /**
    * Blur property - between 1 and 10
    */
   blur?: Blur;
   /**
-   * Force multiple images on the same page to be random
+   * Force identical images (height, width) on the same page to be random
    */
-  forceRandom?: Number;
+  forceRandom?: number;
+  /**
+   * File extension
+   */
+  extension?: FileExtension;
 }
