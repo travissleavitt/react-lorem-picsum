@@ -64,7 +64,7 @@ import { LoremPicsum } from "react-lorem-picsum";
 | blur      | number  | `undefined` | Add blur to image. Must be a number between 1-10                        |
 | extension | string  | `undefined` | Provide extension to url. Currently supported extensions: `jpg`, `webp` |
 
-Component rendered an `img` tag. The rest of the props are passed down.
+Component renders an `img` tag. The rest of the props are passed down.
 
 ## Notes
 
