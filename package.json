@@ -7,6 +7,7 @@
   "scripts": {
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "np",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -36,6 +37,7 @@
     "@types/react": "^16.9.49",
     "babel-loader": "^8.1.0",
     "lodash": "^4.17.20",
+    "np": "^6.5.0",
     "prettier": "^2.1.1",
     "react-is": "^16.13.1",
     "rollup": "^2.26.11",
