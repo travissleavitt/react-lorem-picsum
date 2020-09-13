@@ -24,10 +24,12 @@ export const getBaseUrl = (id: number | null, random: RandomParam): String => {
 
 export const getDimensions = (width: number, height: number, ratio: string | null): String => {
   if (ratio) {
-    const [rWidth, rHeight] = ratio.split(':');
-    const perc = parseInt(rHeight, 10) / parseInt(rWidth, 10);
+    const [ratioWidth, ratioHeight] = ratio.split(':');
+    const percentage = parseInt(ratioHeight, 10) / parseInt(ratioWidth, 10);
 
-    return isNaN(perc) ? `/${width}/${height}` : `/${width}/${Math.floor(width * perc)}`;
+    return isNaN(percentage)
+      ? `/${width}/${height}`
+      : `/${width}/${Math.floor(width * percentage)}`;
   }
 
   return `/${width}/${height}`;
