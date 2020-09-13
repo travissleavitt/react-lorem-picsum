@@ -44,7 +44,7 @@ import { LoremPicsum } from "react-lorem-picsum";
 
 ### Force Random
 
-To force random images of the same size provide a number. Please note specifying an `id` or `random` will not work when `forceRandom` is present.
+To force random images of the same size provide a number. Please note specifying an `id` will not work when `forceRandom` is present.
 
 ```js
 import { LoremPicsum } from "react-lorem-picsum";
