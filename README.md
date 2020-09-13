@@ -56,20 +56,44 @@ import { LoremPicsum } from "react-lorem-picsum";
 <LoremPicsum width={100} height={100} forceRandom={2} />
 ```
 
+### Aspect Ratio
+
+If you are working with ratios you can provide one via the `ratio` prop. This will calculate the correct height given the width.
+
+Please note `Math.floor` is used for uneven calculations.
+
+```js
+import { LoremPicsum } from "react-lorem-picsum";
+
+// https://picsum.photos/800/450
+<LoremPicsum width={800} ratio="16:9" />
+
+// https://picsum.photos/800/640
+<LoremPicsum width={800} ratio="5:4" />
+
+// https://picsum.photos/1600/392
+<LoremPicsum width={1600} ratio="53:13" />
+```
+
 ## Props
 
-| Name      | Type    | Default     | Description                                                             |
-| --------- | ------- | ----------- | ----------------------------------------------------------------------- |
-| id        | number  | `undefined` | Image ID. Please note this prop overrides `random`                      |
-| random    | boolean | `true`      | Choose a random image.                                                  |
-| width     | number  | `100`       | Image width                                                             |
-| height    | number  | `width`     | Image height                                                            |
-| grayscale | boolean | `false`     | Render image in grayscale                                               |
-| blur      | number  | `undefined` | Add blur to image. Must be a number between 1-10                        |
-| extension | string  | `undefined` | Provide extension to url. Currently supported extensions: `jpg`, `webp` |
+| Name      | Type    | Default     | Description                                                                                                       |
+| --------- | ------- | ----------- | ----------------------------------------------------------------------------------------------------------------- |
+| id        | number  | `undefined` | Image ID. Please note this prop overrides `random`                                                                |
+| random    | boolean | `true`      | Choose a random image.                                                                                            |
+| width     | number  | `100`       | Image width                                                                                                       |
+| height    | number  | `width`     | Image height                                                                                                      |
+| grayscale | boolean | `false`     | Render image in grayscale                                                                                         |
+| blur      | number  | `undefined` | Add blur to image. Must be a number between 1-10                                                                  |
+| extension | string  | `undefined` | Provide extension to url. Currently supported extensions: `jpg`, `webp`                                           |
+| ratio     | string  | `undefined` | If a ratio is provided, e.g. `16:9` height will automatically be calculated. Please note `height` will be ignored |
 
 Component renders an `img` tag. The remaining props are passed down.
 
 ## Notes
 
 - I am not affiliated with the creators of [Lorem Picsum](https://picsum.photos/).
+
+```
+
+```
