@@ -22,7 +22,7 @@ A simple React wrapper around [Lorem Picsum](https://picsum.photos/).
 import { LoremPicsum } from "react-lorem-picsum";
 
 // Specify ID
-// https://picsum.photos/id/3/300/300
+// https://picsum.photos/id/4/300/300
 <LoremPicsum id={4} width={300} height={300} />
 
 // Random image
@@ -36,6 +36,10 @@ import { LoremPicsum } from "react-lorem-picsum";
 // Blur
 // https://picsum.photos/seed/picsum/800/450?blur=4
 <LoremPicsum width={800} height={450} blur={4} />
+
+// Omitting height will default it to the width
+// https://picsum.photos/seed/picsum/800/800
+<LoremPicsum width={800} />
 ```
 
 ### Force Random
@@ -64,7 +68,7 @@ import { LoremPicsum } from "react-lorem-picsum";
 | blur      | number  | `undefined` | Add blur to image. Must be a number between 1-10                        |
 | extension | string  | `undefined` | Provide extension to url. Currently supported extensions: `jpg`, `webp` |
 
-Component renders an `img` tag. The rest of the props are passed down.
+Component renders an `img` tag. The remaining props are passed down.
 
 ## Notes
 
