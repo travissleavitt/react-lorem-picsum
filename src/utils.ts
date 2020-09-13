@@ -30,8 +30,20 @@ export const getBaseUrl = (options: Partial<LoremPicsumProps>): String => {
   return baseUrl;
 };
 
-export const getDimensions = ({ width = 100, height }: Partial<LoremPicsumProps>): String => {
+export const getDimensions = ({
+  width = 100,
+  height,
+  ratio,
+}: Partial<LoremPicsumProps>): String => {
   const imageHeight = height || width;
+
+  if (ratio) {
+    const [rWidth, rHeight] = ratio.split(':');
+    const perc = parseInt(rHeight, 10) / parseInt(rWidth, 10);
+
+    return isNaN(perc) ? `/${width}/${imageHeight}` : `/${width}/${Math.floor(width * perc)}`;
+  }
+
   return `/${width}/${imageHeight}`;
 };
 
