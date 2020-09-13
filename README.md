@@ -93,7 +93,3 @@ Component renders an `img` tag. The remaining props are passed down.
 ## Notes
 
 - I am not affiliated with the creators of [Lorem Picsum](https://picsum.photos/).
-
-```
-
-```
