@@ -85,7 +85,7 @@ import { LoremPicsum } from "react-lorem-picsum";
 | Name      | Type                    | Default     | Description                                                                                                                |
 | --------- | ----------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------- |
 | id        | number                  | `undefined` | Image ID. Please note this prop overrides `random`                                                                         |
-| random    | boolean, string, number | `undefined` | Cache bust images with same dimensions. If `true` is provided counter will be managed internally.                          |
+| random    | boolean, string, number | `undefined` | Forces images with identical dimensions to use a random seed. If `true` is provided counter will be managed internally.    |
 | width     | number                  |             | Width **required**                                                                                                         |
 | height    | number                  | `width`     | Image height                                                                                                               |
 | grayscale | boolean                 | `false`     | Render image in grayscale                                                                                                  |
