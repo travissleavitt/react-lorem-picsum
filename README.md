@@ -86,7 +86,7 @@ import { LoremPicsum } from "react-lorem-picsum";
 | --------- | ----------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------- |
 | id        | number                  | `undefined` | Image ID. Please note this prop overrides `random`                                                                         |
 | random    | boolean, string, number | `undefined` | Forces images with identical dimensions to use a random seed. If `true` is provided counter will be managed internally.    |
-| width     | number                  |             | Width **required**                                                                                                         |
+| width     | number                  |             | Image Width **required**                                                                                                   |
 | height    | number                  | `width`     | Image height                                                                                                               |
 | grayscale | boolean                 | `false`     | Render image in grayscale                                                                                                  |
 | blur      | number                  | `undefined` | Add blur to image. Must be a number between 1-10                                                                           |
