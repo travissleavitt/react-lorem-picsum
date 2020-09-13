@@ -29,7 +29,7 @@ describe.each([
   [{ width: 200, height: 100 }, '/200/100', 'returns width and height'],
   [{ width: 200 }, '/200/200', 'returns default height if ommitted'],
   [{ width: 800, ratio: '16:9' }, '/800/450', 'returns correct aspect ratio'],
-  [{ width: 789, ratio: '5:3' }, '/789/473', 'returns correct aspect ratio with uneven ratio'],
+  [{ width: 1600, ratio: '53:13' }, '/1600/392', 'returns correct aspect ratio with uneven ratio'],
   [{ width: 789, ratio: 'ff' }, '/789/789', 'returns width when ratio is not a valid number'],
   [{ width: 1600, ratio: null }, '/1600/1600', 'returns width when ratio is null'],
   [{ width: 500, ratio: '4454' }, '/500/500', 'returns width when ratio is not a valid number'],
