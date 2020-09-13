@@ -1,8 +1,9 @@
 import React from 'react';
-import { getBaseUrl, getDimensions, getOptions } from './utils';
+import makeUrl from './utils';
 
 export type Blur = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 export type FileExtension = 'jpg' | 'webp';
+export type RandomParam = number | string | boolean;
 
 export interface LoremPicsumProps {
   /**
@@ -10,17 +11,13 @@ export interface LoremPicsumProps {
    */
   id?: number;
   /**
-   * Random image
-   */
-  random?: boolean;
-  /**
    * Image height
    */
   height?: number;
   /**
    * Image width
    */
-  width?: number;
+  width: number;
   /**
    * Make the image grayscale
    */
@@ -32,7 +29,7 @@ export interface LoremPicsumProps {
   /**
    * Force identical images (height, width) on the same page to be random
    */
-  forceRandom?: number;
+  random?: RandomParam;
   /**
    * File extension
    */
@@ -46,24 +43,22 @@ export interface LoremPicsumProps {
 const LoremPicsum = (props: LoremPicsumProps) => {
   const {
     id,
-    random = true,
-    width = 100,
+    random,
+    width,
     height = width,
     grayscale = false,
     blur,
-    forceRandom,
     extension,
     ratio,
     ...rest
   } = props;
-  const url = [
-    getBaseUrl({ id, random, width, height, forceRandom }),
-    getDimensions({ width, height, ratio }),
-    getOptions({ grayscale, blur, forceRandom }),
-    extension ? `.${extension}` : '',
-  ];
 
-  return <img src={url.join('')} {...rest} />;
+  return (
+    <img
+      src={makeUrl({ id, random, width, height, grayscale, blur, extension, ratio })}
+      {...rest}
+    />
+  );
 };
 
 export default LoremPicsum;
