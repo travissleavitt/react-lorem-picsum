@@ -1,6 +1,6 @@
 {
   "name": "react-lorem-picsum",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "A React wrapper around the service https://picsum.photos/",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
