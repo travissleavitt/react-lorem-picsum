@@ -25,7 +25,7 @@
     "react"
   ],
   "author": "Traviss Leavitt",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/travissleavitt/react-lorem-picsum/issues"
   },
