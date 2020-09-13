@@ -44,16 +44,21 @@ import { LoremPicsum } from "react-lorem-picsum";
 
 ### Force Random
 
-To force random images of the same size provide a number. Please note specifying an `id` will not work when `forceRandom` is present.
+To force random images of the same size provide a `number`, `string` or `true`. If `true` is provided React Lorem Picsum will manage the value internally. Please note specifying an `id` will not work when `forceRandom` is present.
 
 ```js
 import { LoremPicsum } from "react-lorem-picsum";
 
+// Custom value
+// https://picsum.photos/100/100?random=120683
+<LoremPicsum width={100} height={100} random={120683} />
+
+// Managed value
 // https://picsum.photos/100/100?random=1
-<LoremPicsum width={100} height={100} forceRandom={1} />
+<LoremPicsum width={100} height={100} random />
 
 // https://picsum.photos/100/100?random=2
-<LoremPicsum width={100} height={100} forceRandom={2} />
+<LoremPicsum width={100} height={100} random />
 ```
 
 ### Aspect Ratio
@@ -77,16 +82,16 @@ import { LoremPicsum } from "react-lorem-picsum";
 
 ## Props
 
-| Name      | Type    | Default     | Description                                                                                                       |
-| --------- | ------- | ----------- | ----------------------------------------------------------------------------------------------------------------- |
-| id        | number  | `undefined` | Image ID. Please note this prop overrides `random`                                                                |
-| random    | boolean | `true`      | Choose a random image.                                                                                            |
-| width     | number  | `100`       | Image width                                                                                                       |
-| height    | number  | `width`     | Image height                                                                                                      |
-| grayscale | boolean | `false`     | Render image in grayscale                                                                                         |
-| blur      | number  | `undefined` | Add blur to image. Must be a number between 1-10                                                                  |
-| extension | string  | `undefined` | Provide extension to url. Currently supported extensions: `jpg`, `webp`                                           |
-| ratio     | string  | `undefined` | If a ratio is provided, e.g. `16:9` height will automatically be calculated. Please note `height` will be ignored |
+| Name      | Type                    | Default     | Description                                                                                                                |
+| --------- | ----------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------- |
+| id        | number                  | `undefined` | Image ID. Please note this prop overrides `random`                                                                         |
+| random    | boolean, string, number | `undefined` | Cache bust images with same dimensions. If `true` is provided counter will be managed internally.                          |
+| width     | number                  |             | Width **required**                                                                                                         |
+| height    | number                  | `width`     | Image height                                                                                                               |
+| grayscale | boolean                 | `false`     | Render image in grayscale                                                                                                  |
+| blur      | number                  | `undefined` | Add blur to image. Must be a number between 1-10                                                                           |
+| extension | string                  | `undefined` | Provide extension to url. Currently supported extensions: `jpg`, `webp`                                                    |
+| ratio     | string                  | `undefined` | If a ratio is provided, e.g. `16:9` height will automatically be calculated. Please note the `height` prop will be ignored |
 
 Component renders an `img` tag. The remaining props are passed down.
 

@@ -1,4 +1,4 @@
-import { LoremPicsumProps } from './LoremPicsum';
+import { LoremPicsumProps, RandomParam } from './LoremPicsum';
 
 /**
  * URL structures include:
@@ -8,63 +8,82 @@ import { LoremPicsumProps } from './LoremPicsum';
  * https://picsum.photos/seed/picsum
  *
  */
-export const getBaseUrl = (options: Partial<LoremPicsumProps>): String => {
+export const getBaseUrl = (id: number | null, random: RandomParam): String => {
   const baseUrl = 'https://picsum.photos';
 
-  if (!options) {
+  if (random) {
     return baseUrl;
   }
 
-  if (options.forceRandom) {
-    return baseUrl;
+  if (id) {
+    return `${baseUrl}/id/${id}`;
   }
 
-  if (options.id) {
-    return `${baseUrl}/id/${options.id}`;
-  }
-
-  if (options.random) {
-    return `${baseUrl}/seed/picsum`;
-  }
-
-  return baseUrl;
+  return `${baseUrl}/seed/picsum`;
 };
 
-export const getDimensions = ({
-  width = 100,
-  height,
-  ratio,
-}: Partial<LoremPicsumProps>): String => {
-  const imageHeight = height || width;
-
+export const getDimensions = (width: number, height: number, ratio: string | null): String => {
   if (ratio) {
     const [rWidth, rHeight] = ratio.split(':');
     const perc = parseInt(rHeight, 10) / parseInt(rWidth, 10);
 
-    return isNaN(perc) ? `/${width}/${imageHeight}` : `/${width}/${Math.floor(width * perc)}`;
+    return isNaN(perc) ? `/${width}/${height}` : `/${width}/${Math.floor(width * perc)}`;
   }
 
-  return `/${width}/${imageHeight}`;
+  return `/${width}/${height}`;
 };
 
-export const getOptions = ({ grayscale, blur, forceRandom }: Partial<LoremPicsumProps>): String => {
-  const queryString = [];
+type ReactLoremPicsumCounter = {
+  [key: string]: number;
+};
 
-  if (forceRandom) {
-    queryString.push(`random=${forceRandom}`);
+// Counters for cache busting
+let reactLoremPicsumCounters: ReactLoremPicsumCounter = {};
+
+const getRandomValue = (random: RandomParam, width: number, height: number): string => {
+  if (random === true) {
+    const key = `${width}${height}`;
+
+    if (!reactLoremPicsumCounters[key]) {
+      reactLoremPicsumCounters[key] = 0;
+    }
+
+    reactLoremPicsumCounters[key] = reactLoremPicsumCounters[key] + 1;
+
+    return String(reactLoremPicsumCounters[key]);
   }
 
+  return String(random);
+};
+
+const makeUrl = (params: LoremPicsumProps) => {
+  const { id = null, random = false, width, height, blur, ratio = null, grayscale } = params;
+  const imageHeight = height || width;
+  const baseUrl = getBaseUrl(id, random);
+  const dimensions = getDimensions(width, imageHeight, ratio);
+  const randomValue = getRandomValue(random, width, imageHeight);
+  const options = [];
+
   if (blur) {
-    queryString.push(`blur=${blur}`);
+    options.push(`blur=${blur}`);
+  }
+
+  if (random) {
+    options.push(`random=${randomValue}`);
   }
 
   if (grayscale) {
-    queryString.push('grayscale');
+    options.push('grayscale');
   }
 
-  if (queryString.length === 0) {
-    return '';
-  }
+  const optionsString = options.length > 0 ? `?${options.join('&')}` : '';
 
-  return `?${queryString.join('&')}`;
+  return `${baseUrl}${dimensions}${optionsString}`;
 };
+
+// Used for testing
+export const resetCounters = () => {
+  reactLoremPicsumCounters = {};
+};
+
+export default makeUrl;

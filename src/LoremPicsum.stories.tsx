@@ -46,7 +46,7 @@ export const ForceRandom = () => {
     <div style={wrapperStyles}>
       {times(5).map((i: number) => (
         <div style={colStyles} key={i}>
-          <LoremPicsum forceRandom={i} />
+          <LoremPicsum width={200} random />
         </div>
       ))}
     </div>
