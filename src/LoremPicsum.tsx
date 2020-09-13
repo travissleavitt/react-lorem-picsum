@@ -37,6 +37,10 @@ export interface LoremPicsumProps {
    * File extension
    */
   extension?: FileExtension;
+  /**
+   * Calculate the height automatically based on an aspect ratio
+   */
+  ratio?: string;
 }
 
 const LoremPicsum = (props: LoremPicsumProps) => {
@@ -49,11 +53,12 @@ const LoremPicsum = (props: LoremPicsumProps) => {
     blur,
     forceRandom,
     extension,
+    ratio,
     ...rest
   } = props;
   const url = [
     getBaseUrl({ id, random, width, height, forceRandom }),
-    getDimensions({ width, height }),
+    getDimensions({ width, height, ratio }),
     getOptions({ grayscale, blur, forceRandom }),
     extension ? `.${extension}` : '',
   ];
