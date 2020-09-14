@@ -73,13 +73,13 @@ Please note `Math.floor` is used for uneven calculations.
 ```js
 import { LoremPicsum } from "react-lorem-picsum";
 
-// https://picsum.photos/800/450
+// https://picsum.photos/seed/picsum/800/450
 <LoremPicsum width={800} ratio="16:9" />
 
-// https://picsum.photos/800/640
+// https://picsum.photos/seed/picsum/800/640
 <LoremPicsum width={800} ratio="5:4" />
 
-// https://picsum.photos/1600/392
+// https://picsum.photos/seed/picsum/1600/392
 <LoremPicsum width={1600} ratio="53:13" />
 ```
 
