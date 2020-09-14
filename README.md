@@ -42,9 +42,9 @@ import { LoremPicsum } from "react-lorem-picsum";
 <LoremPicsum width={800} />
 ```
 
-### Force Random
+### Random
 
-To force random images of the same size provide a `number`, `string` or `true`. If `true` is provided React Lorem Picsum will manage the value internally. Please note specifying an `id` will not work when `forceRandom` is present.
+To force random images (ensure no cache) of images of the same size you can provide a `number`, `string` or `true`. If `true` is provided React Lorem Picsum will manage the value internally. Please note specifying an `id` will not work when `random` is present.
 
 ```js
 import { LoremPicsum } from "react-lorem-picsum";
@@ -59,6 +59,9 @@ import { LoremPicsum } from "react-lorem-picsum";
 
 // https://picsum.photos/100/100?random=2
 <LoremPicsum width={100} height={100} random />
+
+// https://picsum.photos/200/200?random=1
+<LoremPicsum width={200} height={200} random />
 ```
 
 ### Aspect Ratio
